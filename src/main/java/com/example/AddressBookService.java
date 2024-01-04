@@ -10,7 +10,8 @@ public class AddressBookService {
     private static final int ADD_BOOK = 1;
     private static final int GET_BOOK = 2;
     private static final int CONTACT_USING_CITY = 3;
-    private static final int EXIT_BOOK = 4;
+    private static final int COUNT_CONTACT_USING_CITY = 4;
+    private static final int EXIT_BOOK = 5;
 
     public AddressBookService() {
         this.dictionary = new HashMap<>();
@@ -35,6 +36,10 @@ public class AddressBookService {
 
                 case CONTACT_USING_CITY:
                     this.ContactUsingCity(sc);
+                    break;
+                
+                case COUNT_CONTACT_USING_CITY:
+                    this.countContactUsingCity(sc);
                     break;
 
                 case EXIT_BOOK:
@@ -112,6 +117,7 @@ public class AddressBookService {
                     exit = true;
                     System.out.println("Exit Address Book");
                     break;
+
                 default:
                     System.out.println("Invalid Input , Please Try Again....");
                     break;
@@ -158,5 +164,20 @@ public class AddressBookService {
             }
         }
         System.out.println();
+    }
+
+    public void countContactUsingCity(Scanner sc)
+    {
+        System.out.println("Enter the city name of which users u want");
+        String city = sc.next();
+        int cnt = 0;
+        for (Map.Entry<String, AddressBook> entry : dictionary.entrySet()) {
+            ArrayList<Contact> arr = entry.getValue().contacts;
+            for (int i = 0; i < arr.size(); i++) {
+                if (arr.get(i).city.equals(city))
+                    cnt++;
+            }
+        }
+        System.out.println(cnt);
     }
 }
