@@ -6,7 +6,8 @@ public class Main {
 
     public static final int ADD_CONTACT = 1;
     public static final int VIEW_CONTACT = 2;
-    public static final int EXIT_CONTACT = 3;
+    public static final int EDIT_CONTACT = 3;
+    public static final int EXIT_CONTACT = 4;
     
     
     public static void main(String[] args) {
@@ -25,6 +26,13 @@ public class Main {
 
                 case VIEW_CONTACT:
                     addressBook.displayContact();
+                    break;
+                
+                case EDIT_CONTACT:
+                    System.out.println("Enter the name of person whom details u want to change ");
+                    String name = sc.next();
+                    addressBook.edit_contact(name, get_input(sc));
+                    break;
 
                 case EXIT_CONTACT:
                     exit = true;

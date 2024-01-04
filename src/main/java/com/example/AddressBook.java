@@ -21,4 +21,16 @@ public class AddressBook {
         for(Contact contact : contacts)
             System.out.println(contact);
     }
+
+    public void edit_contact(String name, Contact newcontact)
+    {
+        for(int i=0;i < contacts.size();i++)
+        {
+            Contact contact = contacts.get(i);
+            if(contact.firstName.equals(name))
+            {
+                contacts.set(i, newcontact);
+            }
+        }
+    }
 }
