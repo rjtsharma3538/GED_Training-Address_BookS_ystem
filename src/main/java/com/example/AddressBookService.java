@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -8,8 +9,9 @@ public class AddressBookService {
     Map<String, AddressBook> dictionary;
     private static final int ADD_BOOK = 1;
     private static final int GET_BOOK = 2;
-    private static final int EXIT_BOOK = 3;
-
+    private static final int CONTACT_USING_CITY=3;
+    private static final int EXIT_BOOK = 4;
+    
     public AddressBookService() {
         this.dictionary = new HashMap<>();
     }
@@ -29,6 +31,10 @@ public class AddressBookService {
 
                 case GET_BOOK:
                     getAddressBook(sc);
+                    break;
+                
+                case CONTACT_USING_CITY:
+                    this.ContactUsingCity(sc);
                     break;
 
                 case EXIT_BOOK:
@@ -139,5 +145,21 @@ public class AddressBookService {
         String email = sc.next();
 
         return new Contact(firstName, lastName, Address, city, city, zip, phone, email);
+    }
+
+    public void ContactUsingCity(Scanner sc)
+    {
+        System.out.println("Enter the city name of which users u want");
+        String city = sc.next();
+        for(Map.Entry<String,AddressBook> entry : dictionary.entrySet())
+        {
+            ArrayList<Contact> arr = entry.getValue().contacts;
+            for(int i=0;i<arr.size();i++)
+            {
+                if(arr.get(i).city.equals(city))
+                    System.out.print(arr.get(i).firstName + " ");
+            }
+        }
+        System.out.println();
     }
 }
