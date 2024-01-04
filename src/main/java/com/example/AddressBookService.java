@@ -83,7 +83,7 @@ public class AddressBookService {
 
             switch (choice) {
                 case ADD_CONTACT:
-                    addressBook.contacts.add(get_input(sc));
+                    addressBook.addContact(get_input(sc));
                     break;
 
                 case VIEW_CONTACT:

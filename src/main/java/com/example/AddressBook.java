@@ -15,6 +15,15 @@ public class AddressBook {
 
     public void addContact(Contact contact)
     {
+        for(int i=0;i<contacts.size();i++)
+        {
+            if(contacts.get(i).firstName.equals(contact.firstName))
+            {
+                System.out.println("This name already exist");
+                return;
+            }
+        }
+
         this.contacts.add(contact);
     }
 
