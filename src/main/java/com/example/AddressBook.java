@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class AddressBook {
 
@@ -24,6 +25,7 @@ public class AddressBook {
     }
 
     public void displayContact() {
+        contacts.sort(Comparator.comparing(Contact::getFirstName));
         for (Contact contact : contacts)
             System.out.println(contact);
     }
